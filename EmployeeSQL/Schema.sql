@@ -1,3 +1,5 @@
+-- Schema
+
 -- Drop tables if exists
 drop TABLE employees;
 drop TABLE departments;
@@ -19,6 +21,7 @@ CREATE TABLE employees (
 	FOREIGN KEY (emp_title_id) REFERENCES titles (title_id)
 );
 -- View Table called employees
+ALTER DATABASE "Employeesql" SET datestyle TO "ISO, MDY";
 SELECT * FROM employees;
 
 -- Create Table called departments
@@ -31,8 +34,8 @@ CREATE TABLE departments(
 SELECT * FROM departments;
 -- Create Table called departments-employees
 CREATE TABLE dept_emp (
-    dept_no VARCHAR(10)   NOT NULL,
-    emp_no INT   NOT NULL,
+    emp_no INTEGER   NOT NULL,
+	dept_no VARCHAR(10)   NOT NULL,
 	FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
 	FOREIGN KEY (dept_no) REFERENCES departments (dept_no)
 );
@@ -42,7 +45,7 @@ SELECT * FROM dept_emp;
 --Create Table called department-manager
 CREATE TABLE dept_manager (
     dept_no VARCHAR(10)   NOT NULL,
-    emp_no INTEGER   NOT NULL,
+	emp_no INTEGER   NOT NULL,
 	FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
 	FOREIGN KEY (dept_no) REFERENCES departments (dept_no)
 );
@@ -68,14 +71,4 @@ CREATE TABLE titles (
 );
 -- View Table called titles
 SELECT * FROM titles;
-
-
-
-
-
-
-
-
-
-
 
